@@ -1,5 +1,4 @@
 {
-  "name": "project2",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -23,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/LouisRollins/project2/issues"
   },
+
   "homepage": "https://github.com/LouisRollins/project2#readme"
 }
