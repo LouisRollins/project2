@@ -1,4 +1,5 @@
 {
+  "name": "project2",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
@@ -22,6 +23,5 @@
   "bugs": {
     "url": "https://github.com/LouisRollins/project2/issues"
   },
-
   "homepage": "https://github.com/LouisRollins/project2#readme"
 }
