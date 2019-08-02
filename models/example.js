@@ -1,8 +1,8 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Events = sequelize.define("Events", {
     eventName: {
       type: Sequelize.STRING,
-      validate:{
+      validate: {
         notEmpty: true
       }
     },
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
         isURL: true
       }
     },
-    
+
   });
   return Events;
 };
