@@ -1,37 +1,37 @@
 module.exports = function(sequelize, DataTypes) {
   var Events = sequelize.define("Events", {
     eventName: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate:{
         notEmpty: true
       }
     },
     eventDateTime: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       validate: {
         notEmpty: true
       }
     },
     lineup: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
         notEmpty: true
       }
     },
     cost: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
         isNumeric: true
       }
     },
     ticketLink: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
         notEmpty: true
       }
     },
     posterLink: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       validate: {
         notEmpty: true,
         isURL: true
