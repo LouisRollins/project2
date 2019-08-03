@@ -11,14 +11,12 @@ body{
   height:100%;
   font-family: Arial, Helvetica, sans-serif
 }
-
-#logo{
-  color:#9ac79a;
-  position: relative;
-  width:400px;
-  display: block;
-  margin: auto;
-  text-align: left;
+form{
+  margin:auto;
+   max-width:300px;
+ }
+ input[type=date]{ 
+  text-align: right;
 }
 #logo > h3{
   font-family:'Permanent Marker',cursive;
@@ -28,26 +26,24 @@ body{
   top:20px;
   right:0px;
 }
-
 .list-group-item {
   line-height: 2.5;
 }
 .table{
   opacity: .8;
 }
-.input-group-prepend{
-  width:75px;
+#logo{
+  color:#9ac79a;
+  display: block;  
+  margin: auto;
+  position: relative;
+  text-align: left;
+  width:400px;
 }
-.input-group-text{
-  width:75px;
-}
-input[type=date]{
- 
-  text-align: right;
-}
-form{
- margin:auto;
-  max-width:300px;
+#logo > h3{  
+  color: #cc0000;
+  font-family:'Permanent Marker',cursive;
+  position: absolute;right:0px;top:20px;
 }
 
 .venueData{
