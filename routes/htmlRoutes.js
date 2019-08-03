@@ -3,7 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Events.findAll({}).then(function(data) {
+    db.Events.findAll({
+      include: [db.Venues]
+    }).then(function(data) {
       console.log(data)
       res.render("index", {
         msg: "Welcome!",
@@ -13,7 +15,7 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
-    res.render("logon")
+    res.render("logon", {});
   });
 
   // Load example page and pass in an example by id
