@@ -12,6 +12,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/login", function(req, res) {
+    res.render("logon")
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Events.findOne({ where: { id: req.params.id } }).then(function(dbExample) {

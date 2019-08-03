@@ -27,7 +27,6 @@ body{
   position: absolute;
   top:20px;
   right:0px;
-
 }
 
 .list-group-item {
@@ -49,4 +48,10 @@ input[type=date]{
 form{
  margin:auto;
   max-width:300px;
+}
+
+.venueData{
+  display: block;
+  max-height: 230px;
+  overflow-y: auto;
 }
