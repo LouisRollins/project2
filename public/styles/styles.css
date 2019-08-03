@@ -1,3 +1,8 @@
+body{
+  height:100%;
+  background-color:silver;
+}
+
 .list-group-item {
   line-height: 2.5;
 }

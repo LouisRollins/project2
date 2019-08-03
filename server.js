@@ -2,15 +2,22 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
+// adding configured passport
+let passport = require("./config/passport")
+
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+app.use(session({ secret: "keyboard cat", resave: true, saveUnintialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
