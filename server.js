@@ -1,5 +1,6 @@
 require("dotenv").config();
 var express = require("express");
+let session = require("express-session")
 var exphbs = require("express-handlebars");
 
 // adding configured passport
