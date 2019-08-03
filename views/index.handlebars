@@ -46,18 +46,16 @@
                     <tr>
 
                         <th>Date</th>
-                        <th>Event</th>
-                        <th>Line Up</th>
+                        <th>Event</th>                        
                         <th>Venue</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{#each events}}
                     <tr id={{this.id}} class="js_row">
-                        <td> {{this.eventDateTime}}</td>
-                        <td> {{this.eventName}}</td>
-                        <td> {{this.lineup}}</td>
-                        <td></td>
+                        <td>{{this.eventDateTime}}</td>
+                        <td>{{this.eventName}}</td>                        
+                        <td>{{this.Venue.venueName}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
