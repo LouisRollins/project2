@@ -16,8 +16,7 @@ function (username, password, done) {
       return done(null, false, {
         message: "Incorrect User."
       });
-    }
-    else if (!typedUser.validPassword(password)) {
+    } else if (!typedUser.validPassword(password)) {
       return done(null, false, {
         message: "Incorrect password."
       });
@@ -27,11 +26,11 @@ function (username, password, done) {
 }
 ));
 
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
