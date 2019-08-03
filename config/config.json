@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "exampledb",
+    "database": "qcudb",
     "host": "localhost",
     "dialect": "mysql"
   },
