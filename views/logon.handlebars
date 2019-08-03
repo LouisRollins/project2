@@ -1,0 +1,29 @@
+ {{!log in form}} 
+<script id="log-on" type="text/x-handlebars-template">
+  <div class="entry">
+
+<h1>Sign In!</h1>
+
+<ul>
+ Username:{{userName}}
+ Password:{{password}}
+</ul>
+
+ {{!forgot password link}} {{!also need to change href path. is currently set to home}}
+<p><a href="/">Forgot password?</a></p>
+
+{{!register link}} {{! need to change href path is currently set to home}}
+<p><a href="/">Sign up!</a></p>
+
+
+{{!form action is set to home. needs to change?}}
+<form action="/" method="POST">
+	<textarea type="text" name="log-on"></textarea>
+
+<button type="submit">Sign in</button>
+</form>
+
+  </div>
+</script>
+
+
