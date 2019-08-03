@@ -1,5 +1,5 @@
 let passport = require("passport");
-let LocalStraget = require("passport-local").Strategy;
+let LocalStrategy = require("passport-local").Strategy;
 
 let db = require("../models");
 
@@ -16,7 +16,7 @@ passport.use(new LocalStrategy({
                 return done(null, false, {
                     message: "Incorrect User."
                 });
-            };
+            }
             else if (!typedUser.validPassword(password)) {
                 return done(null, false, {
                     message: "Incorrect password."
