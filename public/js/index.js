@@ -1,4 +1,40 @@
 // Get references to page elements
+var $dateStart = $("#start-date");
+var $dateEnd = $("#end-date");
+var $row = $(".js_row");
+
+
+function addDays(date, days) {
+  var copy = new Date(Number(date));
+  copy.setDate(date.getDate() + days);
+  var dd = copy.getDate();
+  var mm = copy.getMonth()+1;
+  var yyyy = copy.getFullYear();
+
+  if(dd.toString().length < 2){
+    dd = "0" + dd;
+  }
+  if(mm.toString().length < 2){
+    mm = "0" + mm;
+  }
+
+  copy = yyyy + "-" + mm + "-" + dd;
+
+  return copy;
+}
+var today = new Date();
+$dateStart.val(addDays(today,0));
+$dateStart.attr("min",addDays(today,0));
+$dateEnd.val(addDays(today,10));
+$dateEnd.attr("min",addDays(today,0));
+
+$row.on("click", function () {
+  alert("Hi from " + this.id);
+});
+
+
+
+// Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");

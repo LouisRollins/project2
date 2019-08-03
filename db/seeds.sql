@@ -12,7 +12,7 @@ VALUES("Madpark Music Vol. 4", "2019-08-17 20:00:00", "Swamp78, Phantom Friends,
 ("Deep Shallow at Amos' Southend", "2019-08-16 17:00:00","Deep Shallow, Matone, Satchel Foot", "$8 in adv/$10 Day Of Show", "https://amossouthend.com/events/deep-shallow-and-matone/?fbclid=IwAR292__QS2SvTWLJz5stuMj6MWPYZK37Sum-f6Eptk096LqlcPBRpXekT50", "https://www.facebook.com/deepshallowband/photos/gm.441488856641241/2476307355755052/?type=3&theater",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 
 INSERT INTO Venues(venueName, address, city, state, zip, phoneNumber, createdAt, updatedAt)
-VALUES("The Milestone Club", "3400 Tuckaseegee Rd", "Charlotte", "NC", "28208", "(704) 398-0472",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+VALUES("The Milestone Club", "3400 Tuckaseegee Rd", "Charlotte", "NC", "28208", "(704) 398-0472",CURRENT_TIMESTAMP,g),
 ("Hattie's Tap and Tavern", "2918 The Plaza", "Charlotte", "NC", "28205", "(980) 938-6228",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP ),
 ("Heist Brewery", "2909 N Davidson St #200", "Charlotte", "NC", "28205", "(704) 375-8260",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
 ("Amos' Southend", "1423 S Tryon St", "Charlotte", "NC", "28203", "(704) 595-7585",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
