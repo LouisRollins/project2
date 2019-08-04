@@ -21,11 +21,13 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Events.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/search/:id", function(req, res) {
+    db.Events.findOne({ where: { id: req.params.id }}, {include: [db.Venues]}).then(function(dbSearch) {
+      console.log(dbSearch);
+      res.render("search", {
+        example: JSON.stringify(dbSearch)
       });
+
     });
   });
 
