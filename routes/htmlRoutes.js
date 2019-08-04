@@ -13,7 +13,11 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
-    res.render("logon")
+    res.render("logon");
+  });
+
+  app.get("/register", function(req, res){
+    res.render("register");
   });
 
   // Load example page and pass in an example by id
@@ -23,6 +27,11 @@ module.exports = function(app) {
         example: dbExample
       });
     });
+  });
+
+  //load eventMaintenance
+  app.get("/eventMaintenance", function(req, res){
+    res.render("eventMaintenance");
   });
 
   // Render 404 page for any unmatched routes
