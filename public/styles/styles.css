@@ -4,7 +4,6 @@ html{
 body{
   color: black; 
   background-color:black;
-  background-image: url("/images/mic-unsplash.jpg");
   background-position: center;
   background-repeat:no-repeat;
   background-size: cover;
@@ -51,3 +50,63 @@ form{
   max-height: 230px;
   overflow-y: auto;
 }
+
+.carousel { 
+  z-index: -99;
+ } 
+.carousel .carousel-item {
+  position: fixed;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+
+}
+.carousel .one {
+  /* background: url(../images/QCU_backgrounds/reason_define.jpg); */
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.carousel .two {
+  /* background: url(../images/QCU_backgrounds/oso_ck2.jpg); */
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.carousel .three {
+  /* background: url(../images/QCU_backgrounds/never_i_amos.jpg); */
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.carousel .four {
+  /* background: url(../images/QCU_backgrounds/reflect_refine_oso.jpg); */
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.carousel .five {
+  /* background: url(../images/QCU_backgrounds/oso_ck.jpg); */
+  background-size: cover;
+  -moz-background-size: cover;
+}
+.carousel .carousel-item.active .slide{
+  opacity:1;
+  z-index:-2;
+}
+
+
+ .carousel-fade .carousel-item{
+  opacity: 1;
+  transition: opacity ease-out .7s;
+  z-index: -5;
+}
+
+.carousel.carousel-fade .carousel-item.active {
+  opacity: 1 !important;
+} 

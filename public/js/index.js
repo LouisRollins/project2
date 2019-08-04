@@ -32,6 +32,8 @@ $row.on("click", function () {
   alert("Hi from " + this.id);
 });
 
+//needed for background carousel - Louis 
+$(".carousel").carousel({pause: false});
 
 
 // Get references to page elements
