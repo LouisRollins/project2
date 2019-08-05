@@ -9,18 +9,16 @@
               <table class="table table-secondary table-hover">
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Event</th>
                     <th>Venue</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="js_row">
-                    <td id="test">{{this.id}}</td>
-                    <td>{{this.eventDateTime}}</td>
-                    <td>{{this.eventName}}</td>
-                    <td>{{this.Venue.venueName}}</td>
+                  <tr id={{events.id}} class="js_row">
+                    <td>{{events.dataValues.eventDateTime}}</td>
+                    <td>{{events.eventName}}</td>
+                    <td>{{events.Venue.venueName}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -31,3 +29,80 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="event-title">Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var $modalBody = $(".modal-body");
+var $row = $(".js_row");
+
+$row.on("click", function () {
+
+  $.get("/eventInfo/" + this.id).then(function (eventData) {
+
+    //console.log(eventData);
+
+    $("#event-title").text(eventData.eventName);
+    $("#event-modal").modal("show");
+
+    $modalBody.empty();
+    var $img = $("<img>");
+    $img.attr("src", eventData.posterLink);
+    $img.addClass("eventPoster");
+    $img.appendTo($modalBody);
+
+    var $ul = $("<ul>");
+    $ul.addClass("eventUL");
+
+    $ul = addLi($ul, eventData.eventDateTime);
+    $ul = addLi($ul, eventData.lineup);
+    $ul = addLi($ul, eventData.cost);
+    if (eventData.ticketLink !== null && eventData.ticketLink !== "" && eventData.ticketLink !== "N/A") {
+      var a = $("<a>");
+      var $liLink = $("<li>");
+      a.attr("href", eventData.ticketLink);
+      a.attr("target", "_blank");
+      a.text("CLICK FOR TICKETS");
+
+      $liLink.append(a);
+      $ul.append($liLink);
+    }
+    $ul= addLi($ul,"<strong>WHERE</strong>");
+    $ul = addLi($ul, eventData.Venue.venueName);
+    $ul = addLi($ul, eventData.Venue.address);
+
+    var csz = eventData.Venue.city + ", " + eventData.Venue.state + " " + eventData.Venue.zip;
+
+    $ul = addLi($ul, csz);
+    $ul = addLi($ul, eventData.Venue.phoneNumber);
+    $modalBody.append($ul);
+  });
+
+  function addLi(ul, data) {
+    var $li = $("<li>");
+    $li.html(data);
+    ul.append($li);
+    return ul;
+  }
+  
+});
+</script>
