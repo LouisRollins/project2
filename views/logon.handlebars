@@ -1,27 +1,26 @@
- {{!log in form}} 
-  <div class="entry">
+<header class="display-4 text-center jumbotron pb-0 pt-4">
+    Sign In!
+</header>
 
-<h1>Sign In!</h1>
+<main class="container h-75" style="color:white;">
 
-<ul>
- Username:{{userName}}
- Password:{{password}}
-</ul>
+    <section class="row">
+        <section class="col-12">
+            <p>
+                Username:
+                <input type="text" id="username" placeholder="Username">
+            </p>
+            <p>
+                Password:
+                <input type="password" id="password" placeholder="Password">
+            </p>
+        <section
+        </section>
+    </section>
 
- {{!forgot password link}} {{!also need to change href path. is currently set to home}}
-<p><a href="/">Forgot password?</a></p>
-
-{{!register link}} {{! need to change href path is currently set to home}}
-<p><a href="/">Sign up!</a></p>
-
-
-{{!form action is set to home. needs to change?}}
-<form action="/" method="POST">
-	<textarea type="text" name="log-on"></textarea>
-
-<button type="submit">Sign in</button>
-</form>
-
-  </div>
-
-
+    <section class="">
+        <p>
+            Test
+        </p>
+    </section>
+</main>
