@@ -60,10 +60,6 @@ form{
   background-size: cover;
   -moz-background-size: cover;
 }
-.carousel .carousel-item.active .slide{
-  opacity:1;
-  z-index:-2; 
-}
  .carousel-fade .carousel-item{
   opacity: 1;
   transition: opacity ease-out .7s;
