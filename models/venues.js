@@ -1,43 +1,46 @@
 module.exports = function (sequelize, DataTypes) {
-  var Events = sequelize.define("Events", {
-    eventName: {
-      type: DataTypes.STRING,
-      validate:{
-        notEmpty: true
-      }
-    },
-    eventDateTime: {
-      type: DataTypes.DATE,
-      validate: {
-        notEmpty: true
-      }
-    },
-    lineup: {
+  var Venues = sequelize.define("Venues", {
+    venueName: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true
       }
     },
-    cost: {
+    address: {
       type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    city: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    state: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    zip: {
+      type: DataTypes.INTEGER,
       validate: {
         isNumeric: true
       }
     },
-    ticketLink: {
+    phoneNumber: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true
       }
-    },
-    posterLink: {
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: true,
-        isURL: true
-      }
-    },
-
+    }
   });
-  return Events;
+  Venues.associate = function(models) {
+    Venues.hasMany(models.Events, {
+      onDelete: "cascade"
+    });
+  };
+  return Venues;
 };
