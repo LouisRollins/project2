@@ -6,9 +6,9 @@ body{
   background-color:black;
   background-position: center;
   background-repeat:no-repeat;
-  background-size: cover;
+  background-size: cover; 
+  font-family: Arial, Helvetica, sans-serif;
   height:100%;
-  font-family: Arial, Helvetica, sans-serif
 }
 form{
   margin:auto;
@@ -17,42 +17,8 @@ form{
  input[type=date]{ 
   text-align: right;
 }
-#logo > h3{
-  font-family:'Permanent Marker',cursive;
-  
-  color: #cc0000;
-  position: absolute;
-  top:20px;
-  right:0px;
-}
-.list-group-item {
-  line-height: 2.5;
-}
-.table{
-  opacity: .8;
-}
-#logo{
-  color:#9ac79a;
-  display: block;  
-  margin: auto;
-  position: relative;
-  text-align: left;
-  width:400px;
-}
-#logo > h3{  
-  color: #cc0000;
-  font-family:'Permanent Marker',cursive;
-  position: absolute;right:0px;top:20px;
-}
-
-.venueData{
-  display: block;
-  max-height: 230px;
-  overflow-y: auto;
-}
-
 .carousel { 
-  z-index: -99;
+  z-index: -99;  
  } 
 .carousel .carousel-item {
   position: fixed;
@@ -68,7 +34,6 @@ form{
     -ms-transition: opacity 1s;
     -o-transition: opacity 1s;
     transition: opacity 1s;
-
 }
 .carousel .one {
   /* background: url(../images/QCU_backgrounds/reason_define.jpg); */
@@ -97,16 +62,60 @@ form{
 }
 .carousel .carousel-item.active .slide{
   opacity:1;
-  z-index:-2;
+  z-index:-2; 
 }
-
-
  .carousel-fade .carousel-item{
   opacity: 1;
   transition: opacity ease-out .7s;
   z-index: -5;
 }
-
 .carousel.carousel-fade .carousel-item.active {
-  opacity: 1 !important;
+  opacity: 1 !important; 
 } 
+.eventPoster{
+  width:175px;height:auto;
+}
+.eventUL{
+  list-style-type: none;
+  float:right;
+  margin:0px;
+  max-width: 350px;
+  padding:15px;
+}
+.list-group-item {
+  line-height: 2.5;
+}
+.input-group-text{
+  width:70px;
+}
+.table{
+  opacity: .8;
+}
+.venueData{
+  background-color: #dbdde0;
+  display: block;
+  max-height: 230px;
+  overflow-y: auto; 
+}
+#logo{
+  background-color:black;
+  border:1px solid silver;
+  color:#9ac79a;
+  display: block;  
+  margin: auto;
+  padding: 5px;
+  position: relative;
+  text-align: left;
+  width:400px;  
+}
+#logo > h3{  
+  color: #cc0000;
+  font-family:'Permanent Marker',cursive;
+  position: absolute;right:5px;top:25px;
+}
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 600px;
+  }
+}
+
