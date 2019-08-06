@@ -1,4 +1,5 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated")
 
 module.exports = function (app) {
   // Load index page
@@ -60,7 +61,7 @@ module.exports = function (app) {
   });
 
   //load eventMaintenance
-  app.get("/eventMaintenance", function (req, res) {
+  app.get("/eventMaintenance", isAuthenticated, function (req, res) {
     res.render("eventMaintenance");
   });
 
