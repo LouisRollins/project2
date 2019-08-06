@@ -32,10 +32,11 @@ $(document).ready(function () {
             // posts to api/login with creds
             username: username,
             password: password
-        }).then(function () {
-            // redirects to eventMaintenance if successful
-            window.location.replace("/eventMaintenance");
         })
+        // .then(function () {
+        //     // redirects to eventMaintenance if successful
+        //     window.location.replace("/eventMaintenance");
+        // })
         // .catch(function (err) {
         //     console.log(err)
         // })
