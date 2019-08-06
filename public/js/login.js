@@ -33,10 +33,10 @@ $(document).ready(function () {
       username: username,
       password: password
     })
-    .then(function () {
+      .then(function () {
         // redirects to eventMaintenance if successful
         window.location.replace("/eventMaintenance");
-    })
+      });
     // .catch(function (err) {
     //     console.log(err)
     // })

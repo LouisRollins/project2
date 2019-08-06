@@ -16,12 +16,16 @@ module.exports = function (app) {
 
   // Post: Add New User
   app.post("/api/register", function (req, res) {
+    console.log(req.body)
     db.User.create({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
       })
       .then(function () {
-        res.redirect(307, "/login");
+        res.send(200).end();
       }).catch(function (err) {
         res.status(401).json(err)
       })

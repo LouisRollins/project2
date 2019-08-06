@@ -1,30 +1,37 @@
-<script id="registration-entry" type="text/x-handlebars-template">
-  <div class="entry">
-    <h1>All fields required unless marked optional</h1>
+<header class="display-4 text-center jumbotron pb-0 pt-4">
+    Register as a Promoter
+</header>
 
-<ul>
-    First name:{{firstName}}
-    Last name:{{lastName}}
-    Email:{{email}}
-</ul>
+<main class="container h-75" style="color:white;">
 
-<h2>All usernames and password must be unique!
-    username and password must be between 5 - 8 characters
-</h2>
+    <form class="registerForm">
 
-<ul>
-   Username:{{userName}}
-   Password:{{password}}
-</ul>
+    <section class="row">
+        <section class="col-12 form-group">
+            <p class="d-flex justify-content-center">
+                First Name:
+                <input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
+            </p>
+            <p class="d-flex justify-content-center">
+                Last Name:
+                <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
+            </p>
+            <p class="d-flex justify-content-center">
+                Username:
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+            </p>
+            <p class="d-flex justify-content-center">
+                Password:
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+            </p>
+            <p class="d-flex justify-content-center">
+                Email:
+                <input type="email" class="form-control" id="emailInput" placeholder="Email">
+            </p>
+            <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Sign In</button>
+        </section>
+    </section>
 
-{{!form action is set to post to user.js}}
-{{! or api/register/user?}}
-<form action="api/user" method="POST">
-	<textarea type="text" name="registration-form"></textarea>
+    </form>
 
-<button type="submit">Add account</button>
-</form>
-
-  </div>
-</script>
-
+<script src="js/register.js"></script>
