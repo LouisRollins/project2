@@ -16,10 +16,20 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         notEmpty: true
       }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        isEmail: true
+      }
     }
   });
 
   User.prototype.validPassword = function (password) {
+    // console.log("ENCRYPT MY ISH!!!")
+    // console.log(bcrypt.hashSync(password, bcrypt.genSaltSync(10), null));
     return bcrypt.compareSync(password, this.password);
   };
 
