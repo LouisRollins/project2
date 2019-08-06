@@ -1,0 +1,46 @@
+{{!form to add events and update}} 
+
+  <div class="entry">
+
+<h1>Please fill in form. All fields required unless marked optional.</h1>
+
+<ul>
+{{#each event}}
+    <li>
+        <p>Venue: {{venue}}</p>
+        <p>Address: {{address}}</p>
+        <p>Zipcode: {{zipCode}}</p>
+        <P>Phone number: {{phoneNumber}}</P>
+        <p>Event name: {{eventName}}</p>
+        <p>Line up: {{lineup}}</p>
+        <p>Date and time: {{eventDateTime}} </p>
+        <p>Ticket price: {{cost}} </p>
+        <p>Ticket link: {{ticketLink}}</p>
+        <p>Poster link: {{posterLink}}</p>
+{{/each}}
+    </li>
+</ul>
+
+{{! form action set to post to events.js. Is currently only set up to add events. }}
+<form action="/api/events" method="POST">
+	<textarea type="text" name="add-event-form"></textarea>
+
+{{! button changes from add event to update. only the text tho}}
+<button id="toggle" onclick="myFunction()">Add Event</button>
+
+        <script>
+
+            function myFunction() {
+                var change = document.getElementById("toggle");
+                if (change.innerHTML == "Add")
+                {
+                    change.innerHTML = "Add Event";
+                }
+                else {
+                    change.innerHTML = "Update Event";
+                }
+            }
+
+        </script>
+    </div>
+  </div>
