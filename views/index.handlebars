@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="row">
-
         <div class="col col-12">
+            <!-- Search Citeria -->
             <form>
                 <div class="text-center" style="width: 245px;">
                     <div class="input-group mb-2 text-center">
@@ -53,61 +53,53 @@
 
                     </div>
 
-
-
                     <button id="submit-btn" class="btn btn-lg btn-primary m-5" type="submit">Submit</button>
                 </div>
             </form>
-
         </div>
         <div class="col col-12 p-0">
+
+
+            <!-- TABLE containing event data -->
             <div class="venueData">
                 <table class="table table-secondary table-hover">
                     <thead>
                         <tr>
-
                             <th>Date</th>
                             <th>Event</th>
                             <th>Venue</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {{#each events}}
-                        <tr id={{this.id}} class="js_row">
-                            <td>{{this.eventDateTime}}</td>
-                            <td>{{this.eventName}}</td>
-                            <td>{{this.Venue.venueName}}</td>
-                        </tr>
-                        {{/each}}
+                    <tbody id="event-table">
+                        {{> eventTablePartial}}
                     </tbody>
                 </table>
                 <div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="event-title">Event</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                                                        
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                   
-                        </div>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="event-title">Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
-
-
         </div>
+    </div>
 
-        <script src="js/index.js"></script>
+    <script src="js/index.js"></script>
+</div>
