@@ -61,11 +61,11 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/search/:id", function (req, res) {
-    db.Events.findOne({ where: { id: req.params.id }, include: [db.Venues] }).then(function (dbSearch) {
-      console.log(dbSearch);
+    db.Events.findOne({ where: { id: req.params.id }, include: [db.Venues] }).then(function (data) {
+      data.dataValues.shortDate = formatDate(data.eventDateTime, true);
       res.render("search", {
         msg:"search",
-        events: dbSearch 
+        events: data 
       });
 
     });
