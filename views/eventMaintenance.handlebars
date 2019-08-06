@@ -1,4 +1,4 @@
-{{!-- {{form to add events}} --}}
+{{!form to add events and update}} 
 
   <div class="entry">
 
@@ -21,12 +21,26 @@
     </li>
 </ul>
 
-{{!the form action needs to be changed cuz its currently set to the home page }}
-<form action="/" method="POST">
+{{! form action set to post to events.js. Is currently only set up to add events. }}
+<form action="/api/events" method="POST">
 	<textarea type="text" name="add-event-form"></textarea>
 
-<button type="submit">Add event</button>
-</form>
+{{! button changes from add event to update. only the text tho}}
+<button id="toggle" onclick="myFunction()">Add Event</button>
 
+        <script>
+
+            function myFunction() {
+                var change = document.getElementById("toggle");
+                if (change.innerHTML == "Add")
+                {
+                    change.innerHTML = "Add Event";
+                }
+                else {
+                    change.innerHTML = "Update Event";
+                }
+            }
+
+        </script>
     </div>
   </div>
