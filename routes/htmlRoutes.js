@@ -62,7 +62,6 @@ module.exports = function (app) {
 
   //load eventMaintenance
   app.get("/eventMaintenance", isAuthenticated, function (req, res) {
-    console.log("Was authenticated")
     res.render("eventMaintenance");
   });
 

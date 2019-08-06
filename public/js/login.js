@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var loginForm = $(".login");
     var usernameInput = $("#usernameInput");
     var passwordInput = $("#passwordInput");
 
-    loginForm.on("submit", function(status) {
+    loginForm.on("submit", function (status) {
         console.log("Submit Button Clicked.")
         status.preventDefault();
         var loginInfo = {
@@ -15,6 +15,8 @@ $(document).ready(function() {
         console.log(loginInfo.password);
 
         if (!loginInfo.username || !loginInfo.password) {
+            alert("Fill Out The Required Fields")
+            location.reload();
             return;
         }
 
@@ -30,12 +32,11 @@ $(document).ready(function() {
             // posts to api/login with creds
             username: username,
             password: password
-        }).then(function() {
+        }).then(function () {
             // redirects to eventMaintenance if successful
-            console.log("Authenticated?")
             window.location.replace("/eventMaintenance");
         })
-        // .catch(function(err) {
+        // .catch(function (err) {
         //     console.log(err)
         // })
     }
