@@ -4,23 +4,32 @@
 
 <main class="container h-75" style="color:white;">
 
+    <form class="login">
+
     <section class="row">
-        <section class="col-12">
-            <p>
+        <section class="col-12 form-group">
+            <p class="d-flex justify-content-center">
                 Username:
-                <input type="text" id="username" placeholder="Username">
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
             </p>
-            <p>
+            <p class="d-flex justify-content-center">
                 Password:
-                <input type="password" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
             </p>
-        <section
+            <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Sign In</button>
         </section>
     </section>
 
+    </form>
+
     <section class="">
-        <p>
-            Test
-        </p>
+        <div class="float-left col-3">
+            <p><a href="/register">Sign Up!</a></p>
+        </div>
+        <div class="float-right col-3">
+            <p class="float-right"><a href="/">Forgot Password?</a></p>
+        </div>
     </section>
 </main>
+
+<script src="js/login.js"></script>
