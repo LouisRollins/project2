@@ -1,29 +1,35 @@
- {{!log in form}} 
-<script id="log-on" type="text/x-handlebars-template">
-  <div class="entry">
+<header class="display-4 text-center jumbotron pb-0 pt-4">
+    Sign In!
+</header>
 
-<h1>Sign In!</h1>
+<main class="container h-75" style="color:white;">
 
-<ul>
- Username:{{userName}}
- Password:{{password}}
-</ul>
+    <form class="login">
 
- {{!forgot password link}} {{!also need to change href path. is currently set to home}}
-<p><a href="/">Forgot password?</a></p>
+    <section class="row">
+        <section class="col-12 form-group">
+            <p class="d-flex justify-content-center">
+                Username:
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+            </p>
+            <p class="d-flex justify-content-center">
+                Password:
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+            </p>
+            <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Sign In</button>
+        </section>
+    </section>
 
-{{!register link}} {{! need to change href path is currently set to home}}
-<p><a href="/">Sign up!</a></p>
+    </form>
 
+    <section class="">
+        <div class="float-left col-3">
+            <p><a href="/register">Sign Up!</a></p>
+        </div>
+        <div class="float-right col-3">
+            <p class="float-right"><a href="/">Forgot Password?</a></p>
+        </div>
+    </section>
+</main>
 
-{{!form action is set to home. needs to change?}}
-<form action="/" method="POST">
-	<textarea type="text" name="log-on"></textarea>
-
-<button type="submit">Sign in</button>
-</form>
-
-  </div>
-</script>
-
-
+<script src="js/login.js"></script>

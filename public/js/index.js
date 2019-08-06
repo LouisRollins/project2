@@ -1,99 +1,121 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $dateEnd = $("#end-date");
+var $dateStart = $("#start-date");
+var $modalBody = $(".modal-body");
+//var $row = $(".js_row");
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
+// Format date
+function addDays(date, days) {
+  var copy = new Date(Number(date));
+  copy.setDate(date.getDate() + days);
+  var dd = copy.getDate();
+  var mm = copy.getMonth() + 1;
+  var yyyy = copy.getFullYear();
+  
+  if (dd.toString().length < 2) {
+    dd = "0" + dd;
   }
-};
+  if (mm.toString().length < 2) {
+    mm = "0" + mm;
+  }
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+  copy = yyyy + "-" + mm + "-" + dd;
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+  return copy;
+}
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+// Default search date on index
+var today = new Date();
+$dateStart.val(addDays(today, 0));
+$dateStart.attr("min", addDays(today, 0));
+$dateEnd.val(addDays(today, 10));
+$dateEnd.attr("min", addDays(today, 0));
 
-      $li.append($button);
+// Get data for record clicked on table
+$("#event-table").on("click", function (e) {
 
-      return $li;
-    });
+  $.get("/eventInfo/" + e.target.parentElement.id).then(function (eventData) {
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    // console.log(eventData);
+   
+    $("#event-title").text(eventData.eventName);
+    
+    // Build modal elements with api data
+    $modalBody.empty();
+    var $img = $("<img>");
+    $img.attr("src", eventData.posterLink);
+    $img.addClass("eventPoster");
+    $img.appendTo($modalBody);
+
+    var $ul = $("<ul>");
+    $ul.addClass("eventUL");
+
+    $ul = addLi($ul, eventData.shortDate);
+    $ul = addLi($ul, eventData.lineup);
+    $ul = addLi($ul, eventData.cost);
+
+    if (eventData.ticketLink !== null && eventData.ticketLink !== "" && eventData.ticketLink !== "N/A") {
+      var a = $("<a>");
+      var $liLink = $("<li>");
+      a.attr("href", eventData.ticketLink);
+      a.attr("target", "_blank");
+      a.text("CLICK FOR TICKETS");
+
+      $liLink.append(a);
+      $ul.append($liLink);
+    }
+    $ul= addLi($ul,"<strong>WHERE</strong>");
+    $ul = addLi($ul, eventData.Venue.venueName);
+    $ul = addLi($ul, eventData.Venue.address);
+
+    var csz = eventData.Venue.city + ", " + eventData.Venue.state + " " + eventData.Venue.zip;
+
+    $ul = addLi($ul, csz);
+    $ul = addLi($ul, eventData.Venue.phoneNumber);
+    $modalBody.append($ul);
+
+    $("#event-modal").modal("show");
   });
-};
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+  function addLi(ul, data) {
+    var $li = $("<li>");
+    $li.html(data);
+    ul.append($li);
+    return ul;
+  }
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+});
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+$("#submit-btn").on("click",function(e){
+  
+  e.preventDefault();
+
+  // Start Validtation
+  if ($dateStart.val() > $dateEnd.val()){
+    $("#event-title").text("Invalid Date Range");
+    $modalBody.html("Invalid date range, please try again.");
+    $("#event-modal").modal("show");
     return;
-  }
+  } 
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  var start = new Date($dateStart.val());  
+  var today = new Date();
+
+  if (start < today ){
+    $("#event-title").text("Invalid Date Range");
+    $modalBody.html("Please use current start dates only.");
+    $("#event-modal").modal("show");
+    return;
+  } 
+   
+  // API returns partial with new recordset
+  $.get("/daterange/" + $dateStart.val() + "/" + $dateEnd.val()).then(function(data){
+
+    $("#event-table").empty();
+    $("#event-table").append(data);
+    
   });
+});
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+//needed for background carousel - Louis 
+$(".carousel").carousel({ pause: false });
