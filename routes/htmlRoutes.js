@@ -1,10 +1,23 @@
 var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated")
+var Op = require("sequelize").Op;
 
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Events.findAll({ include: [db.Venues] }).then(function (data) {
+
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    
+    // Find events that are from this date forward
+    db.Events.findAll({ include: [db.Venues], 
+      where:{
+        eventDateTime:{[Op.gte]: today}},
+      order:[["eventDateTime","ASC"]]}).then(function (data) {
+
+      for (var i = 0; i < data.length; i++) {
+        data[i].shortDate = formatDate(data[i].eventDateTime, true);
+      }
 
       res.render("index", {
         msg: "Welcome!",
@@ -14,15 +27,24 @@ module.exports = function (app) {
   });
   app.get("/daterange/:start/:end", function (req, res) {
 
-    var start = req.params.start;
-    var end = req.params.end;
+    var start = new Date(req.params.start);
+    var end = new Date(req.params.end);
+    end.setDate(end.getDate()+1);
+ 
+    db.Events.findAll({
+      include: [db.Venues],
+      where:{
+        eventDateTime:{[Op.between]: [start,end]}},
+        order:[["eventDateTime","ASC"]]
+      }).then(function (data) {
+      
+       for (var i = 0; i < data.length; i++) {
+         data[i].id = data[i].id.toString()
+        data[i].shortDate = formatDate(data[i].eventDateTime, true);
+      }     
 
-    console.log(start);
-    console.log(end);
-
-    db.Events.findAll({ include: [db.Venues] }).then(function (data) {
-
-      res.render("index", {
+      res.render("partials/eventTablePartial", {
+        layout:false,
         msg: "Welcome!",
         events: data
       });
@@ -55,6 +77,7 @@ module.exports = function (app) {
 
     db.Events.findOne({ where: { id: req.params.id }, include: [db.Venues] }).then(function (data) {
 
+      data.dataValues.shortDate = formatDate(data.eventDateTime, true);
       res.json(data);
 
     });
@@ -70,5 +93,42 @@ module.exports = function (app) {
     res.render("404");
   });
 
+  // This function formats the date and time for display
+  function formatDate(date, includeTime) {
+    var copy = new Date(Number(date));
+    copy.setDate(date.getDate());
+    var dd = copy.getDate();
+    var mm = copy.getMonth() + 1;
+    var yyyy = copy.getFullYear();
+
+    if (dd.toString().length < 2) {
+      dd = "0" + dd;
+    }
+    if (mm.toString().length < 2) {
+      mm = "0" + mm;
+    }
+
+    if (includeTime === true) {
+      var hh = copy.getHours() + 5;
+      var nn = copy.getMinutes();
+      var time = "";
+
+      if (nn.toString().length < 2) {
+        nn = "0" + nn;
+      }
+      if (hh > 12) {
+        time = (hh - 13) + ":" + nn + " PM"
+      } else {
+        time = hh + ":" + nn + " AM"
+      }
+
+      copy = mm + "/" + dd + "/" + yyyy + " " + time;
+
+    } else {
+      copy = mm + "/" + dd + "/" + yyyy;
+    }
+
+    return copy;
+  }
 
 };

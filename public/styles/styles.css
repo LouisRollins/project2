@@ -84,13 +84,11 @@ form{
 .input-group-text{
   width:70px;
 }
-.table{
-  opacity: .8;
-}
 .venueData{
   background-color: #dbdde0;
   display: block;
   max-height: 230px;
+  opacity: .9;
   overflow-y: auto; 
 }
 #logo{
