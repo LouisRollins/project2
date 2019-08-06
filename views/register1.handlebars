@@ -1,0 +1,28 @@
+<script id="registration-entry" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>All fields required unless marked optional</h1>
+
+<ul>
+    First name:{{firstName}}
+    Last name:{{lastName}}
+    Email:{{email}}
+</ul>
+
+<h2>All usernames and password must be unique!
+    username and password must be between 5 - 8 characters
+</h2>
+
+<ul>
+   Username:{{userName}}
+   Password:{{password}}
+</ul>
+
+<form action="/" method="POST">
+	<textarea type="text" name="registration-form"></textarea>
+
+<button type="submit">Add account</button>
+</form>
+
+  </div>
+</script>
+
