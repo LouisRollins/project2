@@ -1,46 +1,94 @@
-{{!form to add events and update}} 
+{{!log out button}}
+<a href="/logout" class="text-white float-right">Log Out</a>
+<div class="row">
+    <div class="col col-12 text-center m-5 float">
 
-  <div class="entry">
+        <header>
+            <div id="logo">
+                <h1>QUEEN CITY</h1>
+                <h3>Underground</h3>
+            </div>
+        </header>
 
-<h1>Please fill in form. All fields required unless marked optional.</h1>
+    </div>
+</div>
 
-<ul>
-{{#each event}}
-    <li>
-        <p>Venue: {{venue}}</p>
-        <p>Address: {{address}}</p>
-        <p>Zipcode: {{zipCode}}</p>
-        <P>Phone number: {{phoneNumber}}</P>
-        <p>Event name: {{eventName}}</p>
-        <p>Line up: {{lineup}}</p>
-        <p>Date and time: {{eventDateTime}} </p>
-        <p>Ticket price: {{cost}} </p>
-        <p>Ticket link: {{ticketLink}}</p>
-        <p>Poster link: {{posterLink}}</p>
-{{/each}}
-    </li>
-</ul>
+
+{{!form to add events and update}}
+
+
+<main class="container h-75" style="color: White;">
+
+    <h1>Please fill in form. All fields required unless marked optional.</h1>
+
+    <form class="eventMaintenance">
+        <section class="row">
+            <section class="col-12 form-group">
+                <p class="d-flex justify-content-center">
+                    lineup:
+                    <input type="text" class="form-control" id="lineup-Input" placeholder="lineup">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Date and Time:
+                    <input type="text" class="form-control" id="Date-and-Time-Input" placeholder="Date-and-Time">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Cost:
+                    <input type="text" class="form-control" id="cost-Input" placeholder="cost">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Ticket Link:
+                    <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Poster Link:
+                    <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Phone:
+                    <input type="text" class="form-control" id="phone-Input" placeholder="phone-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    State:
+                    <input type="text" class="form-control" id="state-Input" placeholder="state-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    City:
+                    <input type="text" class="form-control" id="city-Input" placeholder="city-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Zipcode:
+                    <input type="text" class="form-control" id="zipcode-Input" placeholder="zipcode-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Address:
+                    <input type="text" class="form-control" id="address-Input" placeholder="address-Link">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Venue:
+                    <select id="pal-select">
+                        {{#each customers}}
+                        <option value="{{this.id}}">{{this.customer_name}}</option>
+                        {{/each}}
+                    </select>
+                    {{!SEND MULTIPLE VALUE SETS TO HANDLEBARS}}
+                    {{!res.render("index",{snacks: snackResp,customers:customerResp});}}
+                    <input type="text" class="form-control" id="venue-name-Input" placeholder="venue-name-Link">
+                </p>
+
+            </section>
+        </section>
+    </form>
+</main>
+
+
+
+
+
+
 
 {{! form action set to post to events.js. Is currently only set up to add events. }}
 <form action="/api/events" method="POST">
-	<textarea type="text" name="add-event-form"></textarea>
 
-{{! button changes from add event to update. only the text tho}}
-<button id="toggle" onclick="myFunction()">Add Event</button>
-
-        <script>
-
-            function myFunction() {
-                var change = document.getElementById("toggle");
-                if (change.innerHTML == "Add")
-                {
-                    change.innerHTML = "Add Event";
-                }
-                else {
-                    change.innerHTML = "Update Event";
-                }
-            }
-
-        </script>
-    </div>
-  </div>
+    {{! button changes from add event to update. only the text tho}}
+    <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
