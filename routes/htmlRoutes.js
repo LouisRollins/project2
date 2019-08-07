@@ -85,7 +85,27 @@ module.exports = function (app) {
 
   //load eventMaintenance
   app.get("/eventMaintenance", isAuthenticated, function (req, res) {
-    res.render("eventMaintenance");
+    db.Events.create({
+      events:{}
+    .then(([user, created]) => {
+      console.log(user.get({
+        plain: true
+      }))
+      console.log(created)
+  
+
+    // findAll({ include: [db.Venues], 
+    //   where:{
+    //     eventDateTime:{[Op.gte]: today}},
+    //   order:[["eventDateTime","ASC"]]}).then(function (data) {
+
+      for (var i = 0; i < data.length; i++) {
+        data[i].shortDate = formatDate(data[i].eventDateTime, true);
+      }//res.render("eventMaintenance");
+    res.render("eventMaintenance", {
+     // msg: "Welcome!",
+      events: data
+
   });
 
   // Render 404 page for any unmatched routes
