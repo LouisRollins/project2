@@ -37,8 +37,7 @@ $("#event-table").on("click", function (e) {
 
   $.get("/eventInfo/" + e.target.parentElement.id).then(function (eventData) {
 
-    // console.log(eventData);
-   debugger
+    // console.log(eventData);   
     $("#event-title").text(eventData.eventName);
     
     // Build modal elements with api data
@@ -90,10 +89,9 @@ $("#event-table").on("click", function (e) {
 $("#submit-btn").on("click",function(e){
   
   e.preventDefault();
-  debugger
-
-  console.log($dateStart.val());
+  
   var start = new Date($dateStart.val());
+  start = addDays(start,1);
    
   // Start Validtation
   if (start > $dateEnd.val()){
