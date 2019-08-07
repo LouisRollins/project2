@@ -4,6 +4,8 @@ This application was developed to help users discover the variety of music avail
 
 Promotors can register to add their own upcoming events!
 
+Vist site at: https://infinite-chamber-44110.herokuapp.com/
+
 ## TECHNOLOGY
 <ul>
     <li>Bootstrap - https://getbootstrap.com/docs/4.3/getting-started/introduction/</li> 
