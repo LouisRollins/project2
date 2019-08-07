@@ -31,13 +31,14 @@ $dateStart.attr("min", addDays(today, 0));
 $dateEnd.val(addDays(today, 10));
 $dateEnd.attr("min", addDays(today, 0));
 
+
 // Get data for record clicked on table
 $("#event-table").on("click", function (e) {
 
   $.get("/eventInfo/" + e.target.parentElement.id).then(function (eventData) {
 
     // console.log(eventData);
-   
+   debugger
     $("#event-title").text(eventData.eventName);
     
     // Build modal elements with api data
@@ -89,17 +90,21 @@ $("#event-table").on("click", function (e) {
 $("#submit-btn").on("click",function(e){
   
   e.preventDefault();
+  debugger
 
+  console.log($dateStart.val());
+  var start = new Date($dateStart.val());
+   
   // Start Validtation
-  if ($dateStart.val() > $dateEnd.val()){
+  if (start > $dateEnd.val()){
     $("#event-title").text("Invalid Date Range");
     $modalBody.html("Invalid date range, please try again.");
     $("#event-modal").modal("show");
     return;
   } 
-
-  var start = new Date($dateStart.val());  
-  var today = new Date();
+   
+  var today = new Date(); 
+  today.setHours(0,0,0,0);
 
   if (start < today ){
     $("#event-title").text("Invalid Date Range");
