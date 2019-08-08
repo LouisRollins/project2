@@ -17,8 +17,6 @@ form{
  input[type=date]{ 
   text-align: right;
 }
-<<<<<<< Updated upstream
-=======
 
 #event-Container{
   background-color: #f2f2f2;
@@ -41,7 +39,6 @@ text-align: center;
  
 
 
->>>>>>> Stashed changes
 .carousel { 
   z-index: -99;  
  } 
