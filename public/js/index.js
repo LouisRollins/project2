@@ -31,21 +31,36 @@ $dateStart.attr("min", addDays(today, 0));
 $dateEnd.val(addDays(today, 10));
 $dateEnd.attr("min", addDays(today, 0));
 
+
 // Get data for record clicked on table
 $("#event-table").on("click", function (e) {
 
   $.get("/eventInfo/" + e.target.parentElement.id).then(function (eventData) {
 
-    // console.log(eventData);
-   
+    // console.log(eventData);   
     $("#event-title").text(eventData.eventName);
     
     // Build modal elements with api data
     $modalBody.empty();
+    var $imgDiv = $("<div>");
+    $imgDiv.addClass("float-left");
+    $imgDiv.addClass("text-center");
+
     var $img = $("<img>");
     $img.attr("src", eventData.posterLink);
     $img.addClass("eventPoster");
-    $img.appendTo($modalBody);
+    $img.appendTo($imgDiv);
+
+    var address = eventData.Venue.address + "," + eventData.Venue.city + "," + eventData.Venue.state;
+
+    var mapquestURL = "https://www.mapquestapi.com/staticmap/v5/map?locations=" + address + "&size=175,175@2x&key=MtI3pAxufN8Iibk3cR2hsqk3uLr3jW9D";
+    var $map = $("<img>");
+    $map.attr("src",mapquestURL);
+    $map.addClass("map");
+    $map.addClass("mt-3");
+    $map.addClass("mb-3");
+    $map.appendTo($imgDiv); 
+    $imgDiv.appendTo($modalBody);
 
     var $ul = $("<ul>");
     $ul.addClass("eventUL");
@@ -89,17 +104,20 @@ $("#event-table").on("click", function (e) {
 $("#submit-btn").on("click",function(e){
   
   e.preventDefault();
-
+  
+  var start = new Date($dateStart.val());
+  start = addDays(start,1);
+   
   // Start Validtation
-  if ($dateStart.val() > $dateEnd.val()){
+  if (start > $dateEnd.val()){
     $("#event-title").text("Invalid Date Range");
     $modalBody.html("Invalid date range, please try again.");
     $("#event-modal").modal("show");
     return;
   } 
-
-  var start = new Date($dateStart.val());  
-  var today = new Date();
+   
+  var today = new Date(); 
+  today.setHours(0,0,0,0);
 
   if (start < today ){
     $("#event-title").text("Invalid Date Range");

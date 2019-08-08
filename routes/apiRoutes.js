@@ -4,15 +4,14 @@ let passport = require("passport");
 module.exports = function (app) {
   // Post: Authenticate User
   app.post("/api/login",
-    passport.authenticate("local",
-    {
+    passport.authenticate("local", {
       successRedirect: "/eventMaintenance",
       failureRedirect: "/"
     }));
-    // function (req, res) {
-    //   console.log(req.user)
-    //   res.json(req.user)
-    // });
+  // function (req, res) {
+  //   console.log(req.user)
+  //   res.json(req.user)
+  // });
 
   // Post: Add New User
   app.post("/api/register", function (req, res) {
@@ -31,6 +30,7 @@ module.exports = function (app) {
       })
   });
 
+  // Logout of site
   app.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/")
@@ -39,10 +39,20 @@ module.exports = function (app) {
   // Post: New Event
   app.post("/api/eventMaintenance", function (req, res) {
     // console.log("Req.body:", req.body)
-    // neeq req.body
-    db.Events.create().then(function () {
-      res.sendStatus(200);
-    });
+    db.Events.create({
+        eventName: req.body.eventName,
+        eventDateTime: req.body.eventDateTime,
+        lineup: req.body.lineup,
+        cost: req.body.cost,
+        ticketLink: req.body.ticketLink,
+        posterLink: req.body.posterLink,
+        VenueId: req.body.VenueId
+      })
+      .then(function () {
+        res.send(200).end();
+      }).catch(function (err) {
+        res.status(401).json(err)
+      })
   });
 
   // Update: Event

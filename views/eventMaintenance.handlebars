@@ -1,46 +1,70 @@
-{{!form to add events and update}} 
+{{!log out button}}
+<a href="/logout" class="text-white float-left">Log Out</a>
+<div class="row">
+    <div class="col col-12 text-center m-5 float">
 
-  <div class="entry">
+        <header>
+            <div id="logo">
+                <h1>QUEEN CITY</h1>
+                <h3>Underground</h3>
+            </div>
+        </header>
 
-<h1>Please fill in form. All fields required unless marked optional.</h1>
-
-<ul>
-{{#each event}}
-    <li>
-        <p>Venue: {{venue}}</p>
-        <p>Address: {{address}}</p>
-        <p>Zipcode: {{zipCode}}</p>
-        <P>Phone number: {{phoneNumber}}</P>
-        <p>Event name: {{eventName}}</p>
-        <p>Line up: {{lineup}}</p>
-        <p>Date and time: {{eventDateTime}} </p>
-        <p>Ticket price: {{cost}} </p>
-        <p>Ticket link: {{ticketLink}}</p>
-        <p>Poster link: {{posterLink}}</p>
-{{/each}}
-    </li>
-</ul>
-
-{{! form action set to post to events.js. Is currently only set up to add events. }}
-<form action="/api/events" method="POST">
-	<textarea type="text" name="add-event-form"></textarea>
-
-{{! button changes from add event to update. only the text tho}}
-<button id="toggle" onclick="myFunction()">Add Event</button>
-
-        <script>
-
-            function myFunction() {
-                var change = document.getElementById("toggle");
-                if (change.innerHTML == "Add")
-                {
-                    change.innerHTML = "Add Event";
-                }
-                else {
-                    change.innerHTML = "Update Event";
-                }
-            }
-
-        </script>
     </div>
-  </div>
+</div>
+
+{{!form to add events and update}}
+<main class="container h-90" style="color: Black;">
+    <h1>Please Complete in form. All fields required unless marked optional.</h1>
+    <form class="eventMaintenance">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="Event-name">Event Name</label>
+                <input type="text" class="form-control" id="Event-Name-Input" placeholder="Event-Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="input-lineup">Date and Time</label>
+                <input type="text" class="form-control" id="Date-and-Time-Input" placeholder="Date and Time">
+            </div>
+        </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="input-Venue:">Venue</label>
+            <select id="pal-select" placeholder="...">
+                <option selected="selected">Select a venue...</option>
+                {{#each venues}}
+                <option value="{{this.id}}">{{this.venueName}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="inputDate-and-Time:">Lineup</label>
+            <input type="text" class="form-control" id="lineup-Input" placeholder="Lineup">
+        </div>
+        <div class="form-group">
+            <label for="input-cost">Admission Price</label>
+            <input type="text" class="form-control" id="cost-Input" placeholder="Cost">
+        </div>
+        <div class="form-group">
+            <label for="input-cost">Ticket Link</label>
+            <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket Link">
+        </div>
+        <div class="form-group">
+            <label for="input-cost">Poster Link</label>
+            <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster Link">
+        </div>
+        </div>
+        </label>
+        </div>
+        </div>
+
+    {{! button changes from add event to update. only the text tho}}
+    <button type="submit" id="addEvent" class="btn btn-primary">Add
+        Event</button>
+    </section>
+    </section>
+    </div>
+    </form>
+</main>
+
+<script src="js/maintenance.js"></script>

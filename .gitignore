@@ -1,5 +1,6 @@
 .DS_Store
 .env
+config_notes.txt
 node_modules
 npm-debug.log
 package-lock.json

@@ -7,13 +7,16 @@ module.exports = function (app) {
   app.get("/", function (req, res) {
 
     var today = new Date();
-    today.setHours(0,0,0,0);
-    
+    today.setHours(0, 0, 0, 0);
+
     // Find events that are from this date forward
-    db.Events.findAll({ include: [db.Venues], 
-      where:{
-        eventDateTime:{[Op.gte]: today}},
-      order:[["eventDateTime","ASC"]]}).then(function (data) {
+    db.Events.findAll({
+      include: [db.Venues],
+      where: {
+        eventDateTime: { [Op.gte]: today }
+      },
+      order: [["eventDateTime", "ASC"]]
+    }).then(function (data) {
 
       for (var i = 0; i < data.length; i++) {
         data[i].shortDate = formatDate(data[i].eventDateTime, true);
@@ -29,22 +32,23 @@ module.exports = function (app) {
 
     var start = new Date(req.params.start);
     var end = new Date(req.params.end);
-    end.setDate(end.getDate()+1);
- 
+    end.setDate(end.getDate() + 1);
+
     db.Events.findAll({
       include: [db.Venues],
-      where:{
-        eventDateTime:{[Op.between]: [start,end]}},
-        order:[["eventDateTime","ASC"]]
-      }).then(function (data) {
-      
-       for (var i = 0; i < data.length; i++) {
-         data[i].id = data[i].id.toString()
+      where: {
+        eventDateTime: { [Op.between]: [start, end] }
+      },
+      order: [["eventDateTime", "ASC"]]
+    }).then(function (data) {
+
+      for (var i = 0; i < data.length; i++) {
+        data[i].id = data[i].id.toString()
         data[i].shortDate = formatDate(data[i].eventDateTime, true);
-      }     
+      }
 
       res.render("partials/eventTablePartial", {
-        layout:false,
+        layout: false,
         msg: "Welcome!",
         events: data
       });
@@ -64,8 +68,8 @@ module.exports = function (app) {
     db.Events.findOne({ where: { id: req.params.id }, include: [db.Venues] }).then(function (data) {
       data.dataValues.shortDate = formatDate(data.eventDateTime, true);
       res.render("search", {
-        msg:"search",
-        events: data 
+        msg: "search",
+        events: data
       });
 
     });
@@ -85,8 +89,14 @@ module.exports = function (app) {
 
   //load eventMaintenance
   app.get("/eventMaintenance", isAuthenticated, function (req, res) {
-    res.render("eventMaintenance");
-  });
+    db.Venues.findAll({}).then(function(data){
+
+    res.render("eventMaintenance", {
+      venues: data
+    })
+  })
+
+  })
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
@@ -131,4 +141,4 @@ module.exports = function (app) {
     return copy;
   }
 
-};
+}
