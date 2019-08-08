@@ -41,15 +41,18 @@ module.exports = function (app) {
     // console.log("Req.body:", req.body)
     // neeq req.body
     db.Events.create({
-      eventName:
-      eventDateTime:
-      lineup:
-      cost:
-      ticketLink:
-      postLink:
-    }).then(function () {
-      res.sendStatus(200);
-    });
+    eventName: req.body.eventName,
+    eventDateTime: req.body.eventDateTime,
+    lineup: req.body.lineup,
+    cost: req.body.cost,
+    ticketLink: req.body.ticketLink,
+    posterLink: req.body.posterLink
+    })
+    .then(function () {
+      res.send(200).end();
+    }).catch(function (err) {
+      res.status(401).json(err)
+    })
   });
 
   // Update: Event

@@ -26,53 +26,37 @@
         <section class="row">
             <section class="col-12 form-group">
                 <p class="d-flex justify-content-center">
-                    lineup:
-                    <input type="text" class="form-control" id="lineup-Input" placeholder="lineup">
+                    Event Name:
+                    <input type="text" class="form-control" id="Event-Name-Input" placeholder="Event Name">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Lineup:
+                    <input type="text" class="form-control" id="lineup-Input" placeholder="Lineup">
                 </p>
                 <p class="d-flex justify-content-center">
                     Date and Time:
-                    <input type="text" class="form-control" id="Date-and-Time-Input" placeholder="Date-and-Time">
+                    <input type="text" class="form-control" id="Date-and-Time-Input" placeholder="Date and Time">
                 </p>
                 <p class="d-flex justify-content-center">
                     Cost:
-                    <input type="text" class="form-control" id="cost-Input" placeholder="cost">
+                    <input type="text" class="form-control" id="cost-Input" placeholder="Cost">
                 </p>
                 <p class="d-flex justify-content-center">
                     Ticket Link:
-                    <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket-Link">
+                    <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket Link">
                 </p>
                 <p class="d-flex justify-content-center">
                     Poster Link:
-                    <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster-Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Phone:
-                    <input type="text" class="form-control" id="phone-Input" placeholder="phone-Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    State:
-                    <input type="text" class="form-control" id="state-Input" placeholder="state-Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    City:
-                    <input type="text" class="form-control" id="city-Input" placeholder="city-Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Zipcode:
-                    <input type="text" class="form-control" id="zipcode-Input" placeholder="zipcode-Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Address:
-                    <input type="text" class="form-control" id="address-Input" placeholder="address-Link">
+                    <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster Link">
                 </p>
                 <p class="d-flex justify-content-center">
                     Venue:
-                    <select id="pal-select">
-                        {{#each customers}}
-                        <option value="{{this.id}}">{{this.customer_name}}</option>
+                    <select id="pal-select" placeholder=" ...">
+                        <option selected="selected">Select a venue...</option>
+                        {{#each venues}}
+                        <option value="{{this.id}}">{{this.venueName}}</option>
                         {{/each}}
                     </select>
-                    <input type="text" class="form-control" id="venue-name-Input" placeholder="venue-name-Link">
                 </p>
 
             </section>
@@ -87,7 +71,6 @@
 
 
 {{! form action set to post to events.js. Is currently only set up to add events. }}
-<form action="/api/events" method="POST">
 
     {{! button changes from add event to update. only the text tho}}
-    <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
+    <button type="submit" id="addEvent"class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
