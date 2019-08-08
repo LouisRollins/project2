@@ -69,7 +69,13 @@ form{
   opacity: 1 !important; 
 } 
 .eventPoster{
+  
   width:175px;height:auto;
+}
+.eventPoster:hover {  
+  position: relative;top:30px;    
+  transform: scale(2);
+  transition: 1s;
 }
 .eventUL{
   list-style-type: none;
