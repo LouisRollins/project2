@@ -40,7 +40,14 @@ module.exports = function (app) {
   app.post("/api/eventMaintenance", function (req, res) {
     // console.log("Req.body:", req.body)
     // neeq req.body
-    db.Events.create().then(function () {
+    db.Events.create({
+      eventName:
+      eventDateTime:
+      lineup:
+      cost:
+      ticketLink:
+      postLink:
+    }).then(function () {
       res.sendStatus(200);
     });
   });
