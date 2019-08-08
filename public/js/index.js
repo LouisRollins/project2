@@ -42,10 +42,25 @@ $("#event-table").on("click", function (e) {
     
     // Build modal elements with api data
     $modalBody.empty();
+    var $imgDiv = $("<div>");
+    $imgDiv.addClass("float-left");
+    $imgDiv.addClass("text-center");
+
     var $img = $("<img>");
     $img.attr("src", eventData.posterLink);
     $img.addClass("eventPoster");
-    $img.appendTo($modalBody);
+    $img.appendTo($imgDiv);
+
+    var address = eventData.Venue.address + "," + eventData.Venue.city + "," + eventData.Venue.state;
+
+    var mapquestURL = "https://www.mapquestapi.com/staticmap/v5/map?locations=" + address + "&size=175,175@2x&key=MtI3pAxufN8Iibk3cR2hsqk3uLr3jW9D";
+    var $map = $("<img>");
+    $map.attr("src",mapquestURL);
+    $map.addClass("map");
+    $map.addClass("mt-3");
+    $map.addClass("mb-3");
+    $map.appendTo($imgDiv); 
+    $imgDiv.appendTo($modalBody);
 
     var $ul = $("<ul>");
     $ul.addClass("eventUL");
