@@ -1,41 +1,39 @@
-$(document).ready(function() {
-    var maintenance = (".eventMaintenance");
-    var lineup = $("#lineup-Input");
-    var dateTime = $("#Date-and-Time-Input");
-    var cost = $("#cost-Input");
-    var ticketLink = $("#Ticket-Link");
-    var posterLink = $("#Poster-Link");
-    var phone = $("#phone-Input");
-    var state = $("#state-Input");
-    var city = $("#city-Input");
-    var zipcode = $("#zipcode-Input");
-    var address = $("#address-Input");
+$(document).ready(function () {
+    var $maintenance = (".eventMaintenance");
+    var $eventName = $("#Event-Name-Input");
+    var $lineup = $("#lineup-Input");
+    var $dateTime = $("#Date-and-Time-Input");
+    var $cost = $("#cost-Input");
+    var $ticketLink = $("#ticket-Link-Input");
+    var $posterLink = $("#poster-link-Input");
 
-    let newEvent = {
-        
+
+    $maintenance.on("submit", function (event) {
+        console.log("Submit Button Clicked.");
+        event.preventDefault();
+
+        var newEvent = {
+            eventName: $eventName.val().trim(),
+            dateTime: $dateTime.val().trim(),
+            lineup: $lineup.val().trim(),
+            cost: $cost.val().trim(),
+            ticket: $ticketLink.val().trim(),
+            poster: $posterLink.val().trim()
+        }
+
+        addEvent(newEvent.eventName, newEvent.dateTime, newEvent.lineup, newEvent.cost, newEvent.ticket, newEvent.poster);
+    });
+
+    function addEvent(eventName, eventDateTime, lineup, cost, ticket, poster) {
+        $.post("/api/maintenance", {
+            eventName: eventName,
+            eventDateTime: eventDateTime,
+            lineup: lineup,
+            cost: cost,
+            ticketLink: ticket,
+            posterLink: poster
+        }).then(function () {
+            window.location.replace("/index");
+        });
     }
-})
-var $eventName= $("#Event-Name-Input").val().trim();
-var $lineup= $("#lineup-Input").val().trim();
-var $dateTime= $("#Date-and-Time-Input").val().trim();
-var $cost= $("#cost-Input").val().trim();
-var $ticketLink= $("#ticket-Link-Input").val().trim();
-var $posterLink= $("#poster-link-Input").val().trim();
-var $addEvent= $("#addEvent").val().trim();
-
-$addEvent.on("click", function(){
-  addEvent();
 });
-
-function addEvent(eventName, eventDateTime, lineup, cost, ticketLink, posterLink){
-  $.post("/api/maintenance", {
-    eventName: $eventName,
-    eventDateTime: $dateTime,
-    lineup: $lineup,
-    cost: $cost,
-    ticketLink: $ticketLink,
-    posterLink: $posterLink
-  }).then(function(){
-    window.location.reload("/index");
-  });
-}
