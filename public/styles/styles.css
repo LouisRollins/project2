@@ -81,7 +81,7 @@ form{
   opacity: 1 !important; 
 } 
 .eventPoster{
-  
+  display: block;
   width:175px;height:auto;
 }
 .eventPoster:hover {  
@@ -95,12 +95,16 @@ form{
   margin:0px;
   max-width: 350px;
   padding:15px;
+  padding-top: 0px;
 }
 .list-group-item {
   line-height: 2.5;
 }
 .input-group-text{
   width:70px;
+}
+.map{
+  height: 175px;width:175px;
 }
 .venueData{
   background-color: #dbdde0;
