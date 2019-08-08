@@ -86,20 +86,6 @@ module.exports = function (app) {
   //load eventMaintenance
   app.get("/eventMaintenance", isAuthenticated, function (req, res) {
     db.Events.create({
-<<<<<<< Updated upstream
-      events:{}
-    .then(([user, created]) => {
-      console.log(user.get({
-        plain: true
-      }))
-      console.log(created)
-  
-
-    // findAll({ include: [db.Venues], 
-    //   where:{
-    //     eventDateTime:{[Op.gte]: today}},
-    //   order:[["eventDateTime","ASC"]]}).then(function (data) {
-=======
       events: {}
         .then(([user, created]) => {
           console.log(user.get({
@@ -111,7 +97,6 @@ module.exports = function (app) {
         })
     }
     )
->>>>>>> Stashed changes
 
       for (var i = 0; i < data.length; i++) {
         data[i].shortDate = formatDate(data[i].eventDateTime, true);
