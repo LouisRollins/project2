@@ -51,7 +51,7 @@
                 </p>
                 <p class="d-flex justify-content-center">
                     Venue:
-                    <select id="pal-select" placeholder=" ...">
+                    <select id="pal-select" placeholder="...">
                         <option selected="selected">Select a venue...</option>
                         {{#each venues}}
                         <option value="{{this.id}}">{{this.venueName}}</option>
@@ -59,18 +59,22 @@
                     </select>
                 </p>
 
-            </section>
-        </section>
-    </form>
-</main>
 
-
-
-
-
-
-
-{{! form action set to post to events.js. Is currently only set up to add events. }}
+        {{! form action set to post to events.js. Is currently only set up to add events. }}
 
     {{! button changes from add event to update. only the text tho}}
     <button type="submit" id="addEvent"class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
+            </section>
+        </section>
+
+    </form>
+</main>
+
+<script src="js/maintenance.js"></script>
+
+
+
+
+
+
+

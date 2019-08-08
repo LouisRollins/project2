@@ -1,11 +1,12 @@
 $(document).ready(function () {
-    var $maintenance = (".eventMaintenance");
+    var $maintenance = $(".eventMaintenance");
     var $eventName = $("#Event-Name-Input");
     var $lineup = $("#lineup-Input");
     var $dateTime = $("#Date-and-Time-Input");
     var $cost = $("#cost-Input");
     var $ticketLink = $("#ticket-Link-Input");
     var $posterLink = $("#poster-link-Input");
+    var $venue = $("#pal-select");
 
 
     $maintenance.on("submit", function (event) {
@@ -18,22 +19,26 @@ $(document).ready(function () {
             lineup: $lineup.val().trim(),
             cost: $cost.val().trim(),
             ticket: $ticketLink.val().trim(),
-            poster: $posterLink.val().trim()
+            poster: $posterLink.val().trim(),
+            venue: $venue.val()
         }
 
-        addEvent(newEvent.eventName, newEvent.dateTime, newEvent.lineup, newEvent.cost, newEvent.ticket, newEvent.poster);
+        console.log(newEvent.venue)
+
+        addEvent(newEvent.eventName, newEvent.dateTime, newEvent.lineup, newEvent.cost, newEvent.ticket, newEvent.poster, newEvent.venue);
     });
 
-    function addEvent(eventName, eventDateTime, lineup, cost, ticket, poster) {
-        $.post("/api/maintenance", {
+    function addEvent(eventName, eventDateTime, lineup, cost, ticket, poster, venue) {
+        $.post("/api/eventMaintenance", {
             eventName: eventName,
             eventDateTime: eventDateTime,
             lineup: lineup,
             cost: cost,
             ticketLink: ticket,
-            posterLink: poster
+            posterLink: poster,
+            VenueId: venue
         }).then(function () {
-            window.location.replace("/index");
+            window.location.replace("/");
         });
     }
 });
