@@ -7,15 +7,44 @@ $(document).ready(function () {
   var email = $("#emailInput");
   var passwordValidator = $("#passwordValidation");
 
+  firstName.focus();
+
   registerForm.on("submit", function (event) {
-    console.log("Submit Button Clicked.");
+    //console.log("Submit Button Clicked.");
     event.preventDefault();
+
+    //Validation
+    if(firstName.val() === null || firstName.val() === ""){
+      alert("Please enter first name.");
+      firstName.focus();
+      return;
+    }
+    if(lastName.val() === null || lastName.val() === ""){
+      alert("Please enter last name.");
+      lastName.focus();
+      return;
+    }
+    if(username.val() === null || username.val() === ""){
+      alert("Please enter username.");
+      username.focus();
+      return;
+    }
+    if(password.val() === null || password.val() === ""){
+      alert("Please enter a password.");
+      password.focus();
+      return;
+    }
 
     var validationOne = password.val().trim();
     var validationTwo = passwordValidator.val().trim();
 
     if (validationOne !== validationTwo) {
-      alert("Passwords Do Not Match")
+      alert("Passwords Do Not Match");
+      return;
+    }
+    if(email.val() === null || email.val() === ""){
+      alert("Please enter your email address.");
+      email.focus();
       return;
     }
 

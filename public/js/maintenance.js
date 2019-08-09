@@ -8,16 +8,23 @@ $(document).ready(function () {
   var $ticketLink = $("#ticket-Link-Input");
   var $posterLink = $("#poster-link-Input");
   var $venue = $("#pal-select");
-   
-    
+  var $img = $("#imgPoster");
+       
+  $eventName.focus();  
 
-
+  $posterLink.on("change", function(){
+    $img.attr("src",$posterLink.val());
+  });
+  
   $maintenance.on("submit", function (event) {
-    console.log("Submit Button Clicked.");
+    //console.log("Submit Button Clicked.");
     event.preventDefault();
+        
     var $dateTime= $date.val() + " " + $time.val();
-    console.log($date.val() + " " + $time.val());
-    console.log($dateTime);
+    //console.log($date.val() + " " + $time.val());
+    //console.log($dateTime);
+
+
 
     var newEvent = {
       eventName: $eventName.val().trim(),
