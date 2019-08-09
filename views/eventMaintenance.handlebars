@@ -34,8 +34,13 @@
                     <input type="text" class="form-control" id="lineup-Input" placeholder="Lineup">
                 </p>
                 <p class="d-flex justify-content-center">
-                    Date and Time:
-                    <input type="text" class="form-control" id="Date-and-Time-Input" placeholder="Date and Time">
+                    Date:
+                    <input type="date" class="form-control" id="Date-Input" placeholder="Date">
+                </p>
+                <p class="d-flex justify-content-center">
+                    Time:
+                    <input type="time" id="time" name="time"
+                            min="00:00" max="24:00" required>
                 </p>
                 <p class="d-flex justify-content-center">
                     Cost:
@@ -71,10 +76,4 @@
 </main>
 
 <script src="js/maintenance.js"></script>
-
-
-
-
-
-
 

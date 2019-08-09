@@ -5,10 +5,19 @@ $(document).ready(function () {
   var username = $("#usernameInput");
   var password = $("#passwordInput");
   var email = $("#emailInput");
+  var passwordValidator = $("#passwordValidation");
 
   registerForm.on("submit", function (event) {
     console.log("Submit Button Clicked.");
     event.preventDefault();
+
+    var validationOne = password.val().trim();
+    var validationTwo = passwordValidator.val().trim();
+
+    if (validationOne !== validationTwo) {
+      alert("Passwords Do Not Match")
+      return;
+    }
 
     var newUser = {
       firstname: firstName.val().trim(),
