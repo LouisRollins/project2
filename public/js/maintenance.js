@@ -2,20 +2,26 @@ $(document).ready(function () {
   var $maintenance = $(".eventMaintenance");
   var $eventName = $("#Event-Name-Input");
   var $lineup = $("#lineup-Input");
-  var $dateTime = $("#Date-and-Time-Input");
+  var $date = $("#Date-Input");
+  var $time= $("#time");
   var $cost = $("#cost-Input");
   var $ticketLink = $("#ticket-Link-Input");
   var $posterLink = $("#poster-link-Input");
   var $venue = $("#pal-select");
+   
+    
 
 
   $maintenance.on("submit", function (event) {
     console.log("Submit Button Clicked.");
     event.preventDefault();
+    var $dateTime= $date.val() + " " + $time.val();
+    console.log($date.val() + " " + $time.val());
+    console.log($dateTime);
 
     var newEvent = {
       eventName: $eventName.val().trim(),
-      dateTime: $dateTime.val().trim(),
+      dateTime: $dateTime,
       lineup: $lineup.val().trim(),
       cost: $cost.val().trim(),
       ticket: $ticketLink.val().trim(),

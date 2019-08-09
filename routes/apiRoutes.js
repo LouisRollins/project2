@@ -38,7 +38,7 @@ module.exports = function (app) {
 
   // Post: New Event
   app.post("/api/eventMaintenance", function (req, res) {
-    // console.log("Req.body:", req.body)
+    console.log(req.body)
     db.Events.create({
         eventName: req.body.eventName,
         eventDateTime: req.body.eventDateTime,
