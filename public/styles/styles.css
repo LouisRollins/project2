@@ -18,16 +18,23 @@ form{
   text-align: right;
 }
 
-.container {
+.#event-Container {
   background-color: #f2f2f2;
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
 }
+#event-instructions{
+  font-size:large;
+  text-align: center;
+  }
+  
+  #log-out-button{
+    
+  }
+  
+  #addEvent{
 
-.h1{
-
-}
 
 .carousel { 
   z-index: -99;  
