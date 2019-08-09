@@ -1,5 +1,5 @@
 {{!log out button}}
-<a href="/logout" class="text-white float-right">Log Out</a>
+<a href="/logout" class="text-white float-right ">Log Out</a>
 <div class="row">
     <div class="col col-12 text-center m-5 float">
 
@@ -13,67 +13,75 @@
     </div>
 </div>
 
-
-
 {{!form to add events and update}}
-
 
 <main class="container h-75" style="color: White;">
 
     <h1>Please fill in form. All fields required unless marked optional.</h1>
-
+<img id="imgPoster" class="eventPoster float-left mt-1">
     <form class="eventMaintenance">
         <section class="row">
             <section class="col-12 form-group">
-                <p class="d-flex justify-content-center">
-                    Event Name:
-                    <input type="text" class="form-control" id="Event-Name-Input" placeholder="Event Name">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Lineup:
-                    <input type="text" class="form-control" id="lineup-Input" placeholder="Lineup">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Date:
-                    <input type="date" class="form-control" id="Date-Input" placeholder="Date">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Time:
-                    <input type="time" id="time" name="time"
-                            min="00:00" max="24:00" required>
-                </p>
-                <p class="d-flex justify-content-center">
-                    Cost:
-                    <input type="text" class="form-control" id="cost-Input" placeholder="Cost">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Ticket Link:
-                    <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Poster Link:
-                    <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster Link">
-                </p>
-                <p class="d-flex justify-content-center">
-                    Venue:
-                    <select id="pal-select" placeholder="...">
-                        <option selected="selected">Select a venue...</option>
-                        {{#each venues}}
-                        <option value="{{this.id}}">{{this.venueName}}</option>
-                        {{/each}}
-                    </select>
-                </p>
-
-
-        {{! form action set to post to events.js. Is currently only set up to add events. }}
-
-    {{! button changes from add event to update. only the text tho}}
-    <button type="submit" id="addEvent"class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
+                <label for="Event-Name-Input">Event Name</label>
+                <input type="text" class="form-control" id="Event-Name-Input" placeholder="Event Name" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="lineup-Input">Lineup (list of groups performing)</label>
+                <input type="text" class="form-control" id="lineup-Input" placeholder="Lineup" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="Date-Input">Date</label>
+                <input type="date" class="form-control" id="Date-Input" placeholder="Date" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="time">Time</label>
+                <input type="time" id="time" class="form-control" name="time" min="00:00" max="24:00" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="cost-Input">Ticket Cost</label>
+                <input type="text" class="form-control" id="cost-Input" placeholder="Cost" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="ticket-Link-Input">Ticket Link</label>
+                <input type="text" class="form-control" id="ticket-Link-Input" placeholder="Ticket Link" required>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="poster-link-Input">Poster Link</label>
+                <input type="text" class="form-control" id="poster-link-Input" placeholder="Poster Link" required>
             </section>
         </section>
 
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="pal-select">Venue</label>
+                <select id="pal-select" class="form-control">
+                    <option selected="selected">Select a venue...</option>
+                    {{#each venues}}
+                    <option value="{{this.id}}">{{this.venueName}}</option>
+                    {{/each}}
+                </select>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                {{! form action set to post to events.js. Is currently only set up to add events. }}
+                {{! button changes from add event to update. only the text tho}}
+                <button type="submit" id="addEvent" class="btn btn-primary btn-lg d-flex float-right">Add Event</button>
+            </section>
+        </section>
     </form>
 </main>
 
 <script src="js/maintenance.js"></script>
-

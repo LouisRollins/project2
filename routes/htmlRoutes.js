@@ -89,7 +89,7 @@ module.exports = function (app) {
 
   //load eventMaintenance
   app.get("/eventMaintenance", isAuthenticated, function (req, res) {
-    db.Venues.findAll({}).then(function(data){
+    db.Venues.findAll({order:[["venueName", "ASC"]]}).then(function(data){
 
     res.render("eventMaintenance", {
       venues: data
