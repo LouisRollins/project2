@@ -3,23 +3,24 @@
 </header>
 
 <main class="container h-75" style="color:white;">
-
     <form class="login">
-
-    <section class="row">
-        <section class="col-12 form-group">
-            <p class="d-flex justify-content-center">
-                Username:
-                <input type="text" class="form-control" id="usernameInput" placeholder="Username">
-            </p>
-            <p class="d-flex justify-content-center">
-                Password:
-                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            </p>
-            <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Sign In</button>
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="usernameInput">User Name:</label>
+                <input type="text" class="form-control" id="usernameInput" placeholder="Username" name="username">
+            </section>
         </section>
-    </section>
-
+        <section class="row">
+            <section class="col-12 form-group">
+                <label for="passwordInput">Password:</label>                
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password">
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-12 form-group">
+                <button type="submit" class="btn btn-primary btn-lg d-flex float-right">Sign In</button>
+            </section>
+        </section>
     </form>
 
     <section class="">
